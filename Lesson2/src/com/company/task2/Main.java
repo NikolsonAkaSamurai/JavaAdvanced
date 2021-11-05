@@ -5,22 +5,28 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        List<String> list = new ArrayList<>();
-        list.add("hello");
-        list.add("world");
-        list.add("JAVA");
-        System.out.println(list.toString());
-        List<String> list2 = new ArrayList<>(dublicate(list));
-        System.out.println(list2.toString());
+        String word = "JAVA";
+        List<Character> list = new ArrayList<>();
 
-    }
-
-    public static List<String> dublicate(List<String> list){
-        List<String> list2 = new ArrayList<>(list.size() * 2);
-        for (int i = 0; i < list.size(); i++) {
-            list2.add(i, list.get(i));
-            list2.add(i+1, list.get(i));
+        for (int i = 0; i < word.length(); i++) {
+            list.add(word.charAt(i));
         }
-        return  list2;
+
+        List<Character> reworkList = new ArrayList<>();
+
+        for (int i = 0; i < word.length(); i++) {
+            boolean dublicateChar = false;
+            for (int j = 0; !dublicateChar; j++) {
+                reworkList.add(list.get(i));
+                dublicateChar = (j!=0 && (j%2)!=0)?true:false;
+            }
+        }
+
+        for (Character temp:reworkList){
+            System.out.print(temp);
+        }
+
     }
+
+
 }
