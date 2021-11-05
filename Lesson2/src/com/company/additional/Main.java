@@ -12,14 +12,15 @@ public class Main {
 
         while (!exit){
             System.out.println("впишите новую строчку");
-            String line = scn.nextLine();
-            if(!line.equals(null)) list.add(line);
-            if(line.equals("end")){
+            String line = scn.next();
+            if(line != null && !line.equals("end")){
+                list.add(line);
+            }else if(line.equals("end")){
                 exit = true;
                 for(String temp:list){
                     System.out.println(temp);
                 }
-            };
+            }
             System.out.println("=========================");
         }
     }
