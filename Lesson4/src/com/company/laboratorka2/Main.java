@@ -1,4 +1,4 @@
-package com.company.laboratorka1;
+package com.company.laboratorka2;
 
 import java.util.Scanner;
 import java.util.regex.Matcher;
@@ -6,9 +6,8 @@ import java.util.regex.Pattern;
 
 public class Main {
     public static void main(String[] args) {
-        String line = "ahb acb aeb aeeb adcb axeb";
-
-        Pattern p = Pattern.compile("a\\wb");
+        String line = "aa aba abba abbba abca abea";
+        Pattern p = Pattern.compile("ab*+a");
         Matcher m = p.matcher(line);
 
         while (m.find()){
@@ -18,7 +17,7 @@ public class Main {
 //        Scanner scn = new Scanner(line);
 //
 //        while (scn.hasNext()){
-//            if(scn.hasNext("a\\wb")){
+//            if (scn.hasNext(p)){
 //                System.out.println(scn.next());
 //            }else{
 //                scn.next();
