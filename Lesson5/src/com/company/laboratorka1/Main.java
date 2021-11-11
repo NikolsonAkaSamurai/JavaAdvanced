@@ -16,7 +16,7 @@ public class Main {
 
 
 
-        Field[] fields = cl.getFields();
+        Field[] fields;
 
         fields = cl.getDeclaredFields();
         System.out.println(cl.getName());
