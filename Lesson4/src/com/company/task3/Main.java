@@ -1,20 +1,53 @@
 package com.company.task3;
 
+import javax.xml.datatype.Duration;
 import java.time.*;
-import java.time.temporal.ChronoUnit;
-import java.time.temporal.TemporalAdjusters;
-import java.util.Scanner;
+
 
 public class Main {
     public static void main(String[] args) {
-        LocalDateTime other = LocalDateTime.of(2020,10,8,16,2,40);
+       LocalDateTime myBirthday = LocalDateTime.of(1995,9,12,18,0);
 
-        long foolTime = ChronoUnit.SECONDS.between(other, LocalDateTime.now());
-        long years = ChronoUnit.YEARS.between(other, LocalDateTime.now());
-        foolTime -= years*31536000;
-        long moths = ChronoUnit.MONTHS.foo;
-//        int year = (int) (seconds - (seconds%31536000))/31536000;
-//        int mouth = (int) ((seconds - year * 31536000) - (seconds - year * 31536000)%2592000);
-        System.out.println(moths);
+       calculateDate(myBirthday);
+
+    }
+
+    public static void calculateDate(LocalDateTime myBirthday){
+        LocalDateTime realTime = LocalDateTime.now();
+
+        int subYear = realTime.getYear() - myBirthday.getYear();
+        int subMouth = realTime.getMonthValue() - myBirthday.getMonthValue();
+        int subDay = realTime.getDayOfMonth() - myBirthday.getDayOfMonth();
+        int subHour;
+
+        if(realTime.getHour() - myBirthday.getHour() < 0){
+            subDay--;
+            subHour = myBirthday.getHour() - realTime.getHour();
+        }else{
+            subHour = realTime.getHour() - myBirthday.getHour();
+        }
+
+        int subMin;
+
+        if(realTime.getMinute() - myBirthday.getMinute() < 0){
+            subHour--;
+            subMin = myBirthday.getMinute() - realTime.getMinute();
+        }else{
+            subMin = realTime.getMinute() - myBirthday.getMinute();
+        }
+
+        int subSec;
+
+        if(realTime.getSecond() - myBirthday.getSecond() < 0){
+            subMin--;
+            subSec = myBirthday.getSecond() - realTime.getSecond();
+        }else{
+            subSec =  realTime.getSecond() - myBirthday.getSecond();
+        }
+
+
+        System.out.println("лет: " + subYear + " месяцев: " + subMouth + " дней: " + subDay + " часов: " + subHour +
+                " минут: " + subMin + " секунд: " + subSec);
+
     }
 }
